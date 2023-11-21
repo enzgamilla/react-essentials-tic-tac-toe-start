@@ -1,16 +1,19 @@
 import { useState } from "react";
 
-const PlayerInfo = ({ playerName, symbol, isActive }) => {
+const PlayerInfo = ({ playerName, symbol, isActive, onChangeName }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(playerName);
 
   //to get the input value. use "parameter.target.event" but make sure add onChange in input element with that function
-  function onChangeName(nameValue) {
-    setName(nameValue.target.value);
+  function onChangeName(event) {
+    setName(event.target.value);
   }
 
   function editMode() {
     setIsEditing((editing) => !editing);
+    if (isEditing) {
+      onChangeName(symbol, name);
+    }
   }
 
   let showEditMode = isEditing ? (
