@@ -35,12 +35,12 @@ function App() {
         <div id="game-container">
           <ol id="players" className="highlight-player">
             <PlayerInfo
-              playerName="Laurence"
+              playerName="Player 1"
               symbol="X"
               isActive={activePlayer === "X"}
             />
             <PlayerInfo
-              playerName="Ana"
+              playerName="Player 2"
               symbol="O"
               isActive={activePlayer === "O"}
             />
