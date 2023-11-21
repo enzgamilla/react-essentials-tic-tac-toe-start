@@ -9,13 +9,11 @@ import GameOver from "./components/GameOver/GameOver.jsx";
 import deriveActivePlayer from "./js/DeriveActivePlayer.js";
 import DeriveWinner from "./js/DeriveWinner.js";
 import DeriveGameBoard from "./js/DeriveGameBoard.js";
+import PLAYERS from "./js/Players.js";
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
-  });
+  const [players, setPlayers] = useState(PLAYERS);
 
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = DeriveGameBoard(gameTurns);
@@ -54,13 +52,13 @@ function App() {
         <div id="game-container">
           <ol id="players" className="highlight-player">
             <PlayerInfo
-              initialName="Player 1"
+              initialName={PLAYERS.X}
               symbol="X"
               isActive={activePlayer === "X"}
               onChangeName={handlePlayerNameChange}
             />
             <PlayerInfo
-              initialName="Player 2"
+              initialName={PLAYERS.O}
               symbol="O"
               isActive={activePlayer === "O"}
               onChangeName={handlePlayerNameChange}

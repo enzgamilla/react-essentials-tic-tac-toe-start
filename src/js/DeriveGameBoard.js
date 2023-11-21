@@ -1,7 +1,7 @@
-import initialGameBoard from "./GameBoardData.js";
+import INITIAL_GAME_BOARD from "./GameBoardData.js";
 
 const DeriveGameBoard = (gameTurns) => {
-  let gameBoard = [...initialGameBoard.map((arry) => [...arry])];
+  let gameBoard = [...INITIAL_GAME_BOARD.map((arry) => [...arry])];
 
   for (const turn of gameTurns) {
     const { square, player } = turn;
