@@ -1,9 +1,7 @@
-import gameLogo from "../../../public/game-logo.png";
-
 const Header = () => {
   return (
     <header>
-      <img src={gameLogo} alt="tic-tac-toe logo" />
+      <img src="../../../public/game-logo.png" alt="tic-tac-toe logo" />
       <h1>Tic-Tac-Toe</h1>
     </header>
   );
