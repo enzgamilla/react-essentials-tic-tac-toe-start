@@ -1,20 +1,14 @@
 import initialGameBoard from "../../js/GameBoardData";
 
-import { useState } from "react";
+const GameBoard = ({ changePlayer, turns }) => {
+  let gameBoard = initialGameBoard;
 
-const GameBoard = ({ changePlayer, playerActive }) => {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
 
-  const handleClickSquare = (rowIndex, colIndex) => {
-    !gameBoard[rowIndex][colIndex] ? changePlayer() : "";
-    return setGameBoard((prevGame) => {
-      const updatedBoard = [...prevGame];
-      !updatedBoard[rowIndex][colIndex]
-        ? (updatedBoard[rowIndex][colIndex] = playerActive)
-        : "";
-      return updatedBoard;
-    });
-  };
+    gameBoard[row][col] = player;
+  }
 
   return (
     <ol id="game-board">
@@ -23,7 +17,7 @@ const GameBoard = ({ changePlayer, playerActive }) => {
           <ol>
             {row.map((symbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleClickSquare(rowIndex, colIndex)}>
+                <button onClick={() => changePlayer(rowIndex, colIndex)}>
                   {symbol}
                 </button>
               </li>
