@@ -1,18 +1,7 @@
-import initialGameBoard from "../../js/GameBoardData";
-
-const GameBoard = ({ changePlayer, turns }) => {
-  let gameBoard = initialGameBoard;
-
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-
-    gameBoard[row][col] = player;
-  }
-
+const GameBoard = ({ changePlayer, board }) => {
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((symbol, colIndex) => (
