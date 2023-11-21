@@ -17,7 +17,10 @@ const GameBoard = ({ changePlayer, turns }) => {
           <ol>
             {row.map((symbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => changePlayer(rowIndex, colIndex)}>
+                <button
+                  onClick={() => changePlayer(rowIndex, colIndex)}
+                  disabled={symbol !== null}
+                >
                   {symbol}
                 </button>
               </li>

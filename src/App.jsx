@@ -14,8 +14,10 @@ function App() {
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurn) => {
+      const currentPlayer = deriveActivePlayer(prevTurn);
+
       const udpatedTurn = [
-        { square: { row: rowIndex, col: colIndex }, player: activePlayer },
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurn,
       ];
       return udpatedTurn;
