@@ -2,13 +2,16 @@ import initialGameBoard from "../../js/GameBoardData";
 
 import { useState } from "react";
 
-const GameBoard = () => {
+const GameBoard = ({ changePlayer, playerActive }) => {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   const handleClickSquare = (rowIndex, colIndex) => {
+    !gameBoard[rowIndex][colIndex] ? changePlayer() : "";
     return setGameBoard((prevGame) => {
       const updatedBoard = [...prevGame];
-      updatedBoard[rowIndex][colIndex] = "X";
+      !updatedBoard[rowIndex][colIndex]
+        ? (updatedBoard[rowIndex][colIndex] = playerActive)
+        : "";
       return updatedBoard;
     });
   };

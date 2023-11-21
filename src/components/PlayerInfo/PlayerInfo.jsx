@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PlayerInfo = ({ playerName, symbol }) => {
+const PlayerInfo = ({ playerName, symbol, isActive }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(playerName);
 
@@ -26,7 +26,7 @@ const PlayerInfo = ({ playerName, symbol }) => {
   let btnText = isEditing ? "Save" : "Edit";
 
   return (
-    <li>
+    <li className={isActive ? "active" : undefined}>
       <span className="player">
         {showEditMode}
         <span className="player-symbol">{symbol}</span>
