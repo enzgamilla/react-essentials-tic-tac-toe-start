@@ -1,30 +1,32 @@
 import { useState } from "react";
+import Log from "../LogComponent/Log";
 
-const PlayerInfo = ({ playerName, symbol, isActive, onChangeName }) => {
+const PlayerInfo = ({ initialName, symbol, isActive, onChangeName }) => {
+  const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(playerName);
 
   //to get the input value. use "parameter.target.event" but make sure add onChange in input element with that function
-  function onChangeName(event) {
-    setName(event.target.value);
-  }
 
   function editMode() {
     setIsEditing((editing) => !editing);
     if (isEditing) {
-      onChangeName(symbol, name);
+      onChangeName(symbol, playerName);
     }
+  }
+
+  function handleChange(event) {
+    setPlayerName(event.target.value);
   }
 
   let showEditMode = isEditing ? (
     <input
       placeholder="Player Name"
       required
-      value={name}
-      onChange={onChangeName} //make sure to call the function onChangeName with parameter
+      value={playerName}
+      onChange={handleChange} //make sure to call the function handleChange with parameter
     />
   ) : (
-    <span className="player-name">{name}</span>
+    <span className="player-name">{playerName}</span>
   );
   let btnText = isEditing ? "Save" : "Edit";
 
